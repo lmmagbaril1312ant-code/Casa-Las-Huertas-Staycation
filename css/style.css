@@ -1,0 +1,170 @@
+
+/* css/style.css */
+ 
+/* --- Black to Pink Gradient Theme Variables --- */
+:root,
+[data-bs-theme="dark"] {
+    /* Gradient Base Colors (Matched to your image) */
+    --pink-bg-top: #000000;         /* Pure Black */
+    --pink-bg-mid: #8A004F;         /* Deep Magenta/Pink */
+    --pink-bg-bottom: #FFB6C1;      /* Light Soft Pink */
+   
+    /* Accent Colors */
+    --pink-primary: #FF2E93;        /* Vibrant Hot Pink */
+    --pink-light: #FF80AB;          /* Lighter Pink Hover */
+    --pink-text: #FFFFFF;           /* White Text */
+    --pink-muted: #F8BBD0;          /* Soft Pink Muted Text */
+   
+    /* Glassmorphism Variables */
+    --glass-bg: rgba(20, 0, 10, 0.6);        /* Dark Transparent Base */
+    --glass-border: rgba(255, 46, 147, 0.4); /* Pink Transparent Border */
+   
+    /* Override Bootstrap Variables */
+    --bs-body-bg: var(--pink-bg-top);
+    --bs-body-color: var(--pink-text);
+    --bs-primary: var(--pink-primary);
+    --bs-primary-rgb: 255, 46, 147;
+    --bs-link-color: var(--pink-primary);
+    --bs-link-hover-color: var(--pink-light);
+    --bs-dark: #0D0007;
+    --bs-secondary-bg: rgba(20, 0, 10, 0.4);
+    --bs-tertiary-bg: rgba(20, 0, 10, 0.6);
+    --bs-border-color: rgba(255, 46, 147, 0.3);
+}
+ 
+/* --- Global Adjustments & The Exact Gradient Background --- */
+body {
+    background: linear-gradient(to bottom, var(--pink-bg-top) 0%, var(--pink-bg-mid) 50%, var(--pink-bg-bottom) 100%) !important;
+    background-attachment: fixed !important;
+    color: var(--bs-body-color);
+   
+    /* CHANGE THIS LINE */
+    font-family: "Times New Roman", Times, serif !important;
+   
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+ 
+main { flex: 1 0 auto; }
+ 
+/* --- Glassmorphism Utility Class --- */
+.glass-card {
+    background: var(--glass-bg);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border: 1px solid var(--glass-border);
+    border-radius: 1rem;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+ 
+.glass-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 40px 0 rgba(255, 46, 147, 0.3); /* Pink Glow */
+    border-color: var(--pink-primary);
+}
+ 
+/* --- Navigation & Footer (Kept dark for readability) --- */
+.navbar {
+    background: rgba(0, 0, 0, 0.8) !important;
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border-bottom: 1px solid var(--glass-border);
+}
+.navbar-brand { color: #FFFFFF !important; font-weight: 700; }
+.navbar-brand i { color: var(--pink-primary); }
+.nav-link { color: var(--pink-muted) !important; }
+.nav-link.active { color: var(--pink-primary) !important; font-weight: 600; }
+ 
+footer {
+    background: rgba(0, 0, 0, 0.85) !important;
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border-top: 1px solid var(--glass-border) !important;
+    color: var(--pink-muted);
+}
+footer a:hover { color: var(--pink-primary) !important; }
+ 
+/* --- Buttons --- */
+.btn-primary {
+    --bs-btn-bg: var(--pink-primary);
+    --bs-btn-border-color: var(--pink-primary);
+    --bs-btn-hover-bg: var(--pink-light);
+    --bs-btn-hover-border-color: var(--pink-light);
+    --bs-btn-color: #000000;
+    --bs-btn-hover-color: #000000;
+    font-weight: 600;
+}
+.btn-outline-primary {
+    --bs-btn-color: var(--pink-primary);
+    --bs-btn-border-color: var(--pink-primary);
+    --bs-btn-hover-bg: var(--pink-primary);
+    --bs-btn-hover-color: #000000;
+}
+ 
+/* --- Forms & Accordions --- */
+.form-control, .form-select {
+    background: rgba(0, 0, 0, 0.5);
+    border: 1px solid var(--glass-border);
+    color: #FFFFFF;
+}
+.form-control:focus, .form-select:focus {
+    background: rgba(0, 0, 0, 0.8);
+    border-color: var(--pink-primary);
+    box-shadow: 0 0 0 0.25rem rgba(255, 46, 147, 0.25);
+    color: #FFFFFF;
+}
+.accordion-item {
+    background: transparent;
+    border: 1px solid var(--glass-border);
+    margin-bottom: 0.5rem;
+    border-radius: 0.5rem !important;
+    overflow: hidden;
+}
+.accordion-button {
+    background: rgba(0, 0, 0, 0.5);
+    color: #FFFFFF;
+}
+.accordion-button:not(.collapsed) {
+    background: rgba(255, 46, 147, 0.3);
+    color: var(--pink-primary);
+}
+.accordion-body {
+    background: rgba(0, 0, 0, 0.6);
+    color: var(--pink-muted);
+}
+ 
+/* --- Image Hover & Click Effects --- */
+.clickable-img {
+    cursor: pointer;
+    transition: transform 0.4s ease, filter 0.4s ease;
+}
+.clickable-img:hover {
+    transform: scale(1.03);
+    filter: brightness(1.1);
+}
+ 
+/* --- Modal Overrides --- */
+.modal-content.glass-card {
+    background: rgba(10, 0, 5, 0.95); /* Very dark for modal readability */
+}
+.carousel-control-prev-icon, .carousel-control-next-icon {
+    filter: invert(1) drop-shadow(0 0 5px rgba(255, 46, 147, 0.8));
+}
+ 
+/* --- Return to Top --- */
+.return-to-top {
+    position: fixed; bottom: 30px; right: 30px; z-index: 1000; display: none;
+    width: 50px; height: 50px; border-radius: 50%; justify-content: center; align-items: center;
+    box-shadow: 0 4px 10px rgba(255, 46, 147, 0.6); transition: opacity 0.3s ease, transform 0.3s ease;
+    opacity: 0; transform: translateY(20px);
+}
+.return-to-top.show { display: flex; opacity: 1; transform: translateY(0); }
+ 
+/* --- Global Text Shadow for All Pages --- */
+body h1, body h2, body h3, body h4, body h5, body h6,
+body p, body span, body a, body li, body i, body strong,
+body .badge, body .btn {
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8) !important;
+}
